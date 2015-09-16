@@ -22,8 +22,10 @@ public class StudentRepositoryTest {
 
     @Test
     public void saveStudentTest() {
-        Student student = new Student();
 
+        studentRepository.deleteAll();
+
+        Student student = new Student();
         student.setName("mayooran");
         student.setGender(Gender.MALE);
         student.setStatus(Status.SUSPENDED);
@@ -37,19 +39,21 @@ public class StudentRepositoryTest {
 
         Student savedStudent = studentRepository.save(student);
 
-        System.out.println("Student details inserted " + savedStudent.getId());
-    }
+        System.out.println("Inserted student detail : " + savedStudent.getId());
 
+        Student student1 = new Student();
+        student1.setName("Shanya");
+        student1.setGender(Gender.FEMALE);
+        student1.setStatus(Status.ACTIVE);
+        student1.setDateOfBirth(new Date());
+        Address address1 = new Address();
+        address1.setHomeNumber("200");
+        address1.setAddressLineOne("UK/London");
+        student1.setAddress(address1);
 
-    @Test
-    public void testFindByName() throws Exception {
-        Student mayooran = studentRepository.findByName("mayooran");
-        System.out.println(mayooran.getId());
-    }
+        Student savedStudent1 = studentRepository.save(student1);
 
-    @Test
-    public void testDeleteAll() throws Exception {
-        studentRepository.deleteAll();
-        System.out.println("Deleted all records");
+        System.out.println("Inserted student detail : " + savedStudent1.getId());
+
     }
 }

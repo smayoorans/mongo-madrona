@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Document(collection = "address")
 public class Address {
 
-    @Field(value = "house-number")
+    @Field(value = "home-number")
     private String homeNumber = "";
 
     @Field(value = "address-line-one")
@@ -26,5 +26,13 @@ public class Address {
 
     public void setAddressLineOne(String addressLineOne) {
         this.addressLineOne = addressLineOne;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "homeNumber='" + homeNumber + '\'' +
+                ", addressLineOne='" + addressLineOne + '\'' +
+                '}';
     }
 }
